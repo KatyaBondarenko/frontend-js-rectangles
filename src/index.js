@@ -2,23 +2,9 @@
 
 function areInterseсted (firstRec , secondRec){
 
-
-    var firstRec = {
-        top: undefined,
-        left: undefined,
-        width: undefined,
-        height: undefined
-    }
-
-    var secondRec = {
-        top: undefined,
-        left: undefined,
-        width: undefined,
-        height: undefined
-    }
-
-
-    var firstBottom,
+    var firstRec,
+        secondRec,
+        firstBottom,
         firstRight,
         secondBottom,
         secondRight,
@@ -49,11 +35,15 @@ function areInterseсted (firstRec , secondRec){
         result = true;
     }
 
+    else if ((firstRec.top === secondRec.top) && (firstRec.left === secondRec.left) && (firstRec.width === secondRec.width) && (firstRec.height === secondRec.height)){
+
+        result = true;
+    }
+
     else {
 
         result = false;
     }
-
 
 
     return result;
@@ -61,7 +51,9 @@ function areInterseсted (firstRec , secondRec){
 }
 
 
-areInterseсted({
+
+
+console.log(areInterseсted({
     left: 0,
     top: 0,
     width: 20,
@@ -71,9 +63,7 @@ areInterseсted({
     top: 10,
     width: 25,
     height: 25
-});
-
-console.log(areInterseсted());
+}));
 
 
 
