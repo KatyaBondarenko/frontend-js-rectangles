@@ -21,24 +21,18 @@ function areInterseсted (firstRec , secondRec){
     var firstBottom,
         firstRight,
         secondBottom,
-        secondRight
+        secondRight,
         result = true;
 
 
-    firstBottom = firstRec.top + firstRec.width + firstRec.height;
-    firstRight = firstRec.left + firstRec.height + firstRec.width;
-    secondBottom = secondRec.top + secondRec.width + secondRec.height;
-    secondRight = secondRec.left + secondRec.height + secondRec.width;
+    firstBottom = firstRec.top  + firstRec.width;
+    firstRight = firstRec.left  + secondRec.height;
+    secondBottom = secondRec.top + firstRec.width;
+    secondRight = secondRec.left  + secondRec.height;
 
 
 
-    if (firstRec.left < secondRight || firstRight > secondRec.left || firstBottom < secondRec.top || firstRec.top > secondBottom) {
 
-
-
-        result = false;
-
-    }
 
     return result;
 
@@ -57,9 +51,14 @@ areInterseсted({
     height: 25
 });
 
-console.log(result);
+console.log(areInterseсted());
 
-    function filterVisible (){
+
+
+
+
+
+function filterVisible (){
 
 
 
