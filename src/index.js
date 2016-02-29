@@ -22,7 +22,7 @@ function areInterseсted (firstRec , secondRec){
         firstRight,
         secondBottom,
         secondRight,
-        result = true;
+        result;
 
 
     firstBottom = firstRec.top  + firstRec.width;
@@ -31,6 +31,28 @@ function areInterseсted (firstRec , secondRec){
     secondRight = secondRec.left  + secondRec.height;
 
 
+
+    if ((firstRec.left>secondRec.left)&&(secondRight>firstRec.left)&&(firstRec.top>secondRec.top)&&(firstRec.top<secondBottom)){
+
+        result = true;
+    }
+    else  if ((firstRec.left>secondRec.left)&&(secondRight>firstRec.left)&&(firstBottom>secondRec.top)&&(firstBottom<secondBottom) ){
+
+        result = true;
+    }
+    else if ((firstRight>secondRec.left)&&(secondRight>firstRight)&&(firstRec.top>secondRec.top)&&(firstRec.top<secondBottom)){
+
+        result = true;
+    }
+    else if ((firstRight>secondRec.left)&&(secondRight>firstRight)&&(firstBottom>secondRec.top)&&(firstBottom<secondBottom)){
+
+        result = true;
+    }
+
+    else {
+
+        result = false;
+    }
 
 
 
