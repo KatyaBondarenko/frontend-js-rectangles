@@ -11,31 +11,35 @@ function areInterseсted (firstRec , secondRec){
         result;
 
 
-    firstBottom = firstRec.top  + firstRec.width;
-    firstRight = firstRec.left  + secondRec.height;
-    secondBottom = secondRec.top + firstRec.width;
-    secondRight = secondRec.left  + secondRec.height;
+    firstBottom = firstRec.top  + firstRec.height;
+    firstRight = firstRec.left  + firstRec.width;
+    secondBottom = secondRec.top + secondRec.height;
+    secondRight = secondRec.left  + secondRec.width;
 
 
 
-    if ((firstRec.left>secondRec.left)&&(secondRight>firstRec.left)&&(firstRec.top>secondRec.top)&&(firstRec.top<secondBottom)){
-
-        result = true;
-    }
-    else  if ((firstRec.left>secondRec.left)&&(secondRight>firstRec.left)&&(firstBottom>secondRec.top)&&(firstBottom<secondBottom) ){
+    if ((firstRec.left > secondRec.left)&&(secondRight > firstRec.left)&&(firstRec.top > secondRec.top)&&(firstRec.top < secondBottom)){
 
         result = true;
     }
-    else if ((firstRight>secondRec.left)&&(secondRight>firstRight)&&(firstRec.top>secondRec.top)&&(firstRec.top<secondBottom)){
+    else  if ((firstRec.left > secondRec.left)&&(secondRight > firstRec.left)&&(firstBottom > secondRec.top)&&(firstBottom < secondBottom) ){
 
         result = true;
     }
-    else if ((firstRight>secondRec.left)&&(secondRight>firstRight)&&(firstBottom>secondRec.top)&&(firstBottom<secondBottom)){
+    else if ((firstRight > secondRec.left)&&(secondRight > firstRight)&&(firstRec.top > secondRec.top)&&(firstRec.top < secondBottom)){
+
+        result = true;
+    }
+    else if ((firstRight > secondRec.left)&&(secondRight > firstRight)&&(firstBottom > secondRec.top)&&(firstBottom < secondBottom)){
 
         result = true;
     }
 
     else if ((firstRec.top === secondRec.top) && (firstRec.left === secondRec.left) && (firstRec.width === secondRec.width) && (firstRec.height === secondRec.height)){
+
+        result = true;
+    }
+    else if ((firstRec.top < secondRec.top) && (firstRec.left < secondRec.left) && (firstRec.width > secondRec.width) && (firstRec.height > secondRec.height)){
 
         result = true;
     }
@@ -51,18 +55,16 @@ function areInterseсted (firstRec , secondRec){
 }
 
 
-
-
 console.log(areInterseсted({
     left: 0,
     top: 0,
     width: 20,
     height: 20
 }, {
-    left: 10,
-    top: 10,
-    width: 25,
-    height: 25
+    left: 5,
+    top: 5,
+    width: 10,
+    height: 10
 }));
 
 
