@@ -1,59 +1,41 @@
 ﻿
 
-function areInterseсted (firstRec , secondRec){
+function areInterseсted (firstRec , secondRec) {
 
     var firstRec,
         secondRec,
-        firstBottom,
-        firstRight,
-        secondBottom,
-        secondRight,
-        result;
+        firstRecBottom,
+        firstRecRight,
+        secondRecBottom,
+        secondRecRight,
+        result,
+        horizontal,
+        vertical;
 
 
-    firstBottom = firstRec.top  + firstRec.height;
-    firstRight = firstRec.left  + firstRec.width;
-    secondBottom = secondRec.top + secondRec.height;
-    secondRight = secondRec.left  + secondRec.width;
+    firstRecBottom = firstRec.top + firstRec.height;
+    firstRecRight = firstRec.left + firstRec.width;
+    secondRecBottom = secondRec.top + secondRec.height;
+    secondRecRight = secondRec.left + secondRec.width;
 
-
-
-    if ((firstRec.left > secondRec.left)&&(secondRight > firstRec.left)&&(firstRec.top > secondRec.top)&&(firstRec.top < secondBottom)){
-
-        result = true;
+    if (firstRec.left < secondRec.left) {
+        horizontal = firstRecRight > secondRec.left;
     }
-    else  if ((firstRec.left > secondRec.left)&&(secondRight > firstRec.left)&&(firstBottom > secondRec.top)&&(firstBottom < secondBottom) ){
-
-        result = true;
-    }
-    else if ((firstRight > secondRec.left)&&(secondRight > firstRight)&&(firstRec.top > secondRec.top)&&(firstRec.top < secondBottom)){
-
-        result = true;
-    }
-    else if ((firstRight > secondRec.left)&&(secondRight > firstRight)&&(firstBottom > secondRec.top)&&(firstBottom < secondBottom)){
-
-        result = true;
-    }
-
-    else if ((firstRec.top === secondRec.top) && (firstRec.left === secondRec.left) && (firstRec.width === secondRec.width) && (firstRec.height === secondRec.height)){
-
-        result = true;
-    }
-    else if ((firstRec.top < secondRec.top) && (firstRec.left < secondRec.left) && (firstRec.width > secondRec.width) && (firstRec.height > secondRec.height)){
-
-        result = true;
-    }
-
     else {
-
-        result = false;
+        horizontal = firstRec.left < secondRecRight;
     }
 
+    if (firstRec.top < secondRec.top) {
+        vertical = firstRecBottom > secondRec.top;
+    }
+    else {
+        vertical = firstRec.top < secondRecBottom;
+    }
+
+    result = horizontal && vertical;
 
     return result;
-
 }
-
 
 console.log(areInterseсted({
     left: 0,
@@ -67,24 +49,19 @@ console.log(areInterseсted({
     height: 10
 }));
 
-
-
-
-
-
 function filterVisible (parentRectangle, arrayRec) {
-
 
     function newRectangles(rectangle) {
 
-        if (areInterseсted(parentRectangle, rectangle )) {
-
-                return true;
-
-            }
-            else {
-                return false;
-            }
+        if (   rectangle.width
+            && rectangle.height
+            && areInterseсted(parentRectangle, rectangle)
+        ) {
+            return true;
+        }
+        else {
+            return false;
+        }
     }
 
     var intersectedRectangls = arrayRec.filter(newRectangles);
@@ -101,7 +78,10 @@ console.log(filterVisible({
         left: 10, top: 10,
         width: 25,  height: 25
     },
-
+    {
+        left: 15, top: 10,
+        width: 20,  height: 20
+    },
     {
         left: 10, top: 10,
         width: 0,  height: 25
@@ -113,17 +93,6 @@ console.log(filterVisible({
 ]));
 
 
-
-
-console.log(areInterseсted({
-    left: 0,
-    top: 0,
-    width: 20,
-    height: 20
-}, {
-    left: 100, top: 10,
-    width: 5,  height: 5
-}));
 
 
 
