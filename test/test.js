@@ -89,6 +89,7 @@ describe('The function', function () {
 					intersected = areInterseсted(rect1, rect8);
 					expect(intersected).toBe(true);
 				});
+
 			});
 			
 			describe('not intersected rectangles', function(){
@@ -114,6 +115,10 @@ describe('The function', function () {
 				
 				it(stringifyRect(rect1) + ' and ' + stringifyRect(rect4), function () {
 					intersected = areInterseсted(rect1, rect4);
+					expect(intersected).toBe(false);
+				});
+				it(stringifyRect(rect1) + ' and ' + stringifyRect(rect7), function () {
+					intersected = areInterseсted(rect1, rect7);
 					expect(intersected).toBe(false);
 				});
 			});
